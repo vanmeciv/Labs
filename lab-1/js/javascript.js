@@ -1,16 +1,33 @@
 // instructions for building this .js found here: https://github.com/UWTMGIS/TGIS_504-Wi20/blob/master/lab-1/Instructions.md
 //required code to add map
-var map = L.map('map').fitWorld();
+// var map = L.map('map').fitWorld(); //commented out for step 4
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g', {
+// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g', {
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'mapbox/streets-v10',
+//     //retina screen detection errors and tile size adjustments
+//     tileSize: 512,
+//     zoomOffset: -1,
+// }).addTo(map);
+//Lab 1 Step 4: Changing the basemap based on environmental conditions
+var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
-    id: 'mapbox/streets-v10',
-    //retina screen detection errors and tile size adjustments
+    id:'mapbox/light-v10',
     tileSize: 512,
     zoomOffset: -1,
-}).addTo(map);
-//Geolocation
+});
+
+var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id:'mapbox/dark-v10',
+    tileSize: 512,
+    zoomOffset: -1,
+});
+var map = L.map('map', {layers:[light]}).fitWorld();
+//Lab 1 Step 2: Geolocation
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
     L.marker(e.latlng).addTo(map)  //this adds a marker at the lat and long returned by the locate function.
@@ -22,7 +39,23 @@ function onLocationFound(e) {
       L.circle(e.latlng, radius, {color: 'green'}).addTo(map);
     }
     else {
-      L.circle(e.latlng, radius, {color: 'red'}).addTo(mymap);
+      L.circle(e.latlng, radius, {color: 'red'}).addTo(map); //needs to be .addTo(map) NOT .addTo(mymap)
+    }
+//Lab 1 Step 4: Changing the basemap based on environmental conditions (Cont.)
+    // Basemap changes conditionally based on sunrise/sunset time using SunCalc (https://github.com/mourner/suncalc)
+    var times = SunCalc.getTimes(new Date(), e.latitude, e.longitude);
+    var sunrise = times.sunrise.getHours();
+    var sunset = times.sunset.getHours();
+
+
+    var currentTime = new Date().getHours();
+    if (sunrise < currentTime && currentTime < sunset){
+      map.removeLayer(dark);
+      map.addLayer(light);
+    }
+    else {
+      map.removeLayer(light);
+      map.addLayer(dark);
     }
 }
 map.on('locationfound', onLocationFound); //this is the event listener

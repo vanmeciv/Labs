@@ -26,6 +26,7 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
     zoomOffset: -1,
 });
 var map = L.map('map', {layers:[light]}).fitWorld(); //moved the map initialization to bottom of environmental contions
+
 //Lab 1 Step 2: Geolocation
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
@@ -36,10 +37,10 @@ function onLocationFound(e) {
     // circle only shows on desktop browser if less than certain distance
 // Lab 1 Step 3: Giving the user feedback about the geolocation accuracy of their device
     if (radius <= 100) {
-      L.circle(e.latlng, radius, {color: 'green'}).addTo(map);
+      L.circle(e.latlng, radius, {color: 'green'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map);//added a topltip description of the circle
     }
     else {
-      L.circle(e.latlng, radius, {color: 'red'}).addTo(map); //needs to be .addTo(map) NOT .addTo(mymap)
+      L.circle(e.latlng, radius, {color: 'red'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map); //needs to be .addTo(map) NOT .addTo(mymap); also added a topltip description of the circle
     }
 //Lab 1 Step 4: Changing the basemap based on environmental conditions (Cont.)
     // Basemap changes conditionally based on sunrise/sunset time using SunCalc (https://github.com/mourner/suncalc)
@@ -66,4 +67,13 @@ function onLocationError(e) {
 }
 map.on('locationerror', onLocationError);
 //recenters the map on the user's location (browser dialogue box requesting location permissions)
-map.locate({setView: true, maxZoom: 16});
+map.locate({setView: true, maxZoom: 16})
+
+// Lab 1 Step 5
+// L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
+// L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
+// function onMapClick(e) {
+//     alert("You clicked the map at " + e.latlng);
+// }
+//
+// mymap.on('click', onMapClick);

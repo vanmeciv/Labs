@@ -75,7 +75,7 @@ map.locate({setView: true, maxZoom: 16})
 // Lab 1 Step 5: Finishing touches
 // Part 1: This alerts visitors of the page requesing location info
 // Creating window object
-var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly.'})
+var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly.'})
            .show()
 // Part 4: Set up the map.locate method to run at the click of a button rather than on page load. (uses Easy Button Plugin: https://github.com/CliffCloud/Leaflet.EasyButton)
 // Adding hello world popup

@@ -10,7 +10,7 @@
 //     zoomOffset: -1,
 // }).addTo(map);
 //Lab 1 Step 4: Changing the basemap based on environmental conditions
-var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
+var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id:'mapbox/light-v10',
@@ -18,7 +18,7 @@ var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
     zoomOffset: -1,
 });
 
-var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
+var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id:'mapbox/dark-v10',
@@ -26,7 +26,6 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
     zoomOffset: -1,
 });
 var map = L.map('map', {layers:[light]}).fitWorld(); //moved the map initialization to bottom of environmental contions
-
 //Lab 1 Step 2: Geolocation
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
@@ -38,9 +37,13 @@ function onLocationFound(e) {
 // Lab 1 Step 3: Giving the user feedback about the geolocation accuracy of their device
     if (radius <= 100) {
       L.circle(e.latlng, radius, {color: 'green'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map);//added a topltip description of the circle
+      // L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
+      // L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
     }
     else {
       L.circle(e.latlng, radius, {color: 'red'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map); //needs to be .addTo(map) NOT .addTo(mymap); also added a topltip description of the circle
+      // L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
+      // L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
     }
 //Lab 1 Step 4: Changing the basemap based on environmental conditions (Cont.)
     // Basemap changes conditionally based on sunrise/sunset time using SunCalc (https://github.com/mourner/suncalc)
@@ -69,11 +72,13 @@ map.on('locationerror', onLocationError);
 //recenters the map on the user's location (browser dialogue box requesting location permissions)
 map.locate({setView: true, maxZoom: 16})
 
-// Lab 1 Step 5
-// L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
-// L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
-// function onMapClick(e) {
-//     alert("You clicked the map at " + e.latlng);
+// Lab 1 Step 5: Finishing touches
+// Part 1: This alerts visitors of the page requesing location info
+// map.on('load', onMapLoad);
+// function onMapLoad(e) {
+//     alert("test");
 // }
-//
-// mymap.on('click', onMapClick);
+
+// Creating window object
+var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> Select Allow to continue and close out of this window.'})
+           .show()

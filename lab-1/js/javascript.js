@@ -36,12 +36,12 @@ function onLocationFound(e) {
     // circle only shows on desktop browser if less than certain distance
 // Lab 1 Step 3: Giving the user feedback about the geolocation accuracy of their device
     if (radius <= 100) {
-      L.circle(e.latlng, radius, {color: 'green'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map);//added a topltip description of the circle
+      L.circle(e.latlng, radius, {color: 'green'}).bindTooltip("The circle is displaying your approximate<br>proximity to this marker.").addTo(map);//added a topltip description of the circle
       // L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
       // L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
     }
     else {
-      L.circle(e.latlng, radius, {color: 'red'}).bindTooltip("The circle is displaying your approximate proximity to this marker.").addTo(map); //needs to be .addTo(map) NOT .addTo(mymap); also added a topltip description of the circle
+      L.circle(e.latlng, radius, {color: 'red'}).bindTooltip("The circle is displaying your approximate<br>proximity to this marker.").addTo(map); //needs to be .addTo(map) NOT .addTo(mymap); also added a topltip description of the circle
       // L.circle([48.85, 2.35], {radius: 1000}).bindTooltip("test").addTo(map);
       // L.rectangle([[48.84, 2.34], [48.86, 2.36]]).bindTooltip("test").addTo(map);
     }

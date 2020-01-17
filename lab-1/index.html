@@ -4,15 +4,8 @@
 	<title>T GIS 504: Lab 1</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><!--These settings are ideal for full-screen mobile use-->
-	<!-- my internal styles -->
 	<link rel="stylesheet" href="styles/style.css"/>
-<<<<<<< HEAD
-	<!-- slide and swipe style -->
-	<link rel="stylesheet" href="styles/slide-and-swipe-menu.css"/>
 	<!-- Adding Leaflet style and js files (Step 1: Prepare the page and initialize the map) -->
-=======
-	<!-- Adding Leaflet style and js files -->
->>>>>>> parent of 98f6132... updates comments and notes
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin=""/>
@@ -37,73 +30,37 @@
 	<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
 	<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
 	<!--fontAwesome-->
+
 </head>
 <body>
-<<<<<<< HEAD
-	<!-- slide and swipe html initialization -->
-	<nav class="nav">
-			<img src="img/swipe.png" alt="swipe image" />
-
-	</nav>
-	<a class="open-navigation ssm-toggle-nav ssm-nav-visible" href="#" title=""><i class="fa fa-bars"></i></a>
-	<!-- <main>
-			<p>Click <a href="#" class="ssm-toggle-nav" title="open nav">here</a> for more details.</p>
-	</main> -->
-	<!-- Slide & Swipe Menu -->
-	<!-- jQuery library (served from Google) -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
-	<!-- touchSwipe library -->
-	<script src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
-
-	<!-- Sliding swipe menu javascript file -->
-	<script src="js/jquery.slideandswipe.js"></script>
-	<!-- slide and swipe plugin initialization -->
-	<script>
-	   $(document).ready(function() {
-	       $('nav').slideAndSwipe();
-	   });
-	</script>
-  <div class="ssm-overlay ssm-toggle-nav"></div>
 	<!-- Step 1: Prepare the page and initialize the map -->
-=======
->>>>>>> parent of 98f6132... updates comments and notes
 	<div id="map"></div>
 	<script src="js/javascript.js"></script>
 	<!-- From Step 5 Section 2
 	<script>
-
 	var cities = L.layerGroup();
-
 	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
 	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
 	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
 	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
-
-
 	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', attribution: mbAttr}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11',   attribution: mbAttr});
-
 	var map = L.map('map', {
 		center: [39.73, -104.99],
 		zoom: 10,
 		layers: [grayscale, cities]
 	});
-
 	var baseLayers = {
 		"Grayscale": grayscale,
 		"Streets": streets
 	};
-
 	var overlays = {
 		"Cities": cities
 	};
-
 	L.control.layers(baseLayers, overlays).addTo(map);
 	</script> -->
 </body>

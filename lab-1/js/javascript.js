@@ -25,7 +25,14 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
     tileSize: 512,
     zoomOffset: -1,
 });
-var map = L.map('map', {layers:[light]}).fitWorld(); //moved the map initialization to bottom of environmental contions
+var map = L.map('map', {layers:[light, dark]}).fitWorld(); //moved the map initialization to bottom of environmental contions
+// Step 5: Finishing Touches
+// Part 2 Adding a layer control
+var baseMaps = {
+    "Light": light,
+    "Dark": dark
+};
+L.control.layers(baseMaps).addTo(map);
 //Lab 1 Step 2: Geolocation
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
@@ -69,8 +76,9 @@ function onLocationError(e) {
   alert(e.message);
 }
 map.on('locationerror', onLocationError);
-// //recenters the map on the user's location (browser dialogue box requesting location permissions)
-map.locate({setView: true, maxZoom: 16})
+//recenters the map on the user's location (browser dialogue box requesting location permissions)
+// maxZoom default is Infinity
+map.locate({setView: true, watch: true, maxZoom: 16})
 
 // Lab 1 Step 5: Finishing touches
 // Part 1: This alerts visitors of the page requesing location info

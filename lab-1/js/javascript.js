@@ -25,10 +25,6 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
     tileSize: 512,
     zoomOffset: -1,
 });
-// Step 4: Changing the basemap based on environmental conditions
-// var map = L.map('map', {layers:[light]}).fitWorld();
-// Step 5: Finishing touches
-// Part 2 (basemap layer controls)
 var map = L.map('map', {layers:[light, dark]}).fitWorld(); //moved the map initialization to bottom of environmental contions
 // Step 5: Finishing Touches
 // Part 2 Adding a layer control
@@ -38,7 +34,6 @@ var baseMaps = {
 };
 L.control.layers(baseMaps).addTo(map);
 //Lab 1 Step 2: Geolocation
-//
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
     L.marker(e.latlng).addTo(map)  //this adds a marker at the lat and long returned by the locate function.
@@ -83,8 +78,6 @@ function onLocationError(e) {
 map.on('locationerror', onLocationError);
 //recenters the map on the user's location (browser dialogue box requesting location permissions)
 // maxZoom default is Infinity
-// setView recenters map on user's location
-// watch detects continuous location changes -- requests location data for each browser page refresh
 map.locate({setView: true, watch: true, maxZoom: 16})
 
 // Lab 1 Step 5: Finishing touches
@@ -99,8 +92,11 @@ var win =  L.control.window(map,{title:'Geolocation',content:'This page requests
 // L.easyButton('<img src="img/easy-button.png">', function(btn, map){
 //     helloPopup.setLatLng(map.getCenter()).openOn(map);
 // }).addTo(map);
+
+
+
 // Step 5: Finishing Touches
-// Part 3 BONUS (run map.locate method on button click)
+// Part 3 BONUS
 // Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords
 L.easyButton('fas fa-crosshairs', function(btn, map){
   alert('Map center is at: ' + map.getCenter().toString())

@@ -99,6 +99,6 @@ var win =  L.control.window(map,{title:'Geolocation',content:'This page requests
 // Part 3 BONUS
 // Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords
 L.easyButton('fas fa-crosshairs', function(btn, map){
-  alert('Map center is at:' + map.getCenter().toString())
+  alert('Map center is at: ' + map.getCenter().toString())
     helloPopup.setLatLng(map.getCenter()).openOn(map);
 }).addTo(map);

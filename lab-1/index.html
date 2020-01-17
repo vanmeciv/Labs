@@ -4,7 +4,10 @@
 	<title>T GIS 504: Lab 1</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><!--These settings are ideal for full-screen mobile use-->
+	<!-- my internal styles -->
 	<link rel="stylesheet" href="styles/style.css"/>
+	<!-- slide and swipe style -->
+	<link rel="stylesheet" href="styles/slide-and-swipe-menu.css"/>
 	<!-- Adding Leaflet style and js files (Step 1: Prepare the page and initialize the map) -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -30,9 +33,32 @@
 	<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
 	<link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
 	<!--fontAwesome-->
-
 </head>
 <body>
+	<!-- slide and swipe html initialization -->
+	<nav class="nav">
+			<img src="img/swipe.png" alt="swipe image" />
+
+	</nav>
+	<main>
+			<p>Click <a href="#" class="ssm-toggle-nav" title="open nav">here</a> for more details.</p>
+	</main>
+	<!-- Slide & Swipe Menu -->
+	<!-- jQuery library (served from Google) -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+	<!-- touchSwipe library -->
+	<script src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+	<!-- Sliding swipe menu javascript file -->
+	<script src="js/jquery.slideandswipe.js"></script>
+	<!-- slide and swipe plugin initialization -->
+	<script>
+	   $(document).ready(function() {
+	       $('nav').slideAndSwipe();
+	   });
+	</script>
+  <div class="ssm-overlay ssm-toggle-nav"></div>
 	<!-- Step 1: Prepare the page and initialize the map -->
 	<div id="map"></div>
 	<script src="js/javascript.js"></script>

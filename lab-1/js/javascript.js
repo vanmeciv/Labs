@@ -85,6 +85,7 @@ map.on('locationerror', onLocationError);
 // maxZoom default is Infinity
 // setView recenters map on user's location
 // watch detects continuous location changes -- requests location data for each browser page refresh
+// watch: true may darken red circle depending upon how many times the user allows location collection
 map.locate({setView: true, watch: true, maxZoom: 16})
 
 // Lab 1 Step 5: Finishing touches

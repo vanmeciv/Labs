@@ -82,8 +82,7 @@ function onLocationError(e) {
 }
 map.on('locationerror', onLocationError);
 //recenters the map on the user's location (browser dialogue box requesting location permissions)
-// maxZoom default is Infinity
-// setView recenters map on user's location
+// setView recenters map on user's location or world view
 // watch detects continuous location changes -- requests location data for each browser page refresh
 // watch: true may darken red circle depending upon how many times the user allows location collection
 map.locate({setView: true, watch: true, maxZoom: 16})

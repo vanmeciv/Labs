@@ -1,3 +1,7 @@
+// LAB 2
+//
+//
+// instructions for building this .js found here: https://github.com/UWTMGIS/TGIS_504-Wi20/blob/master/lab-2/instructions.md
 var map = L.map('map').setView([47.25, -122.44], 11);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
@@ -22,10 +26,6 @@ var control = L.Routing.control({
      router: L.Routing.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g')
 
 }).addTo(map);
-
-
-
-
 
 
 // LAB 1

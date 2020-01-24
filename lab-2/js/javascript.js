@@ -6,14 +6,21 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/256/{z}/{x}/{y}?access_
     id: 'mapbox/streets-v11',
     accessToken: 'pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g',
 }).addTo(map);
-// Leaflet Routing Machine Plugin
+// Part 2 Step 2: Leaflet Routing Machine Plugin
 var control = L.Routing.control({
     waypoints: [
         L.latLng(47.246587, -122.438830),
         L.latLng(47.318017, -122.542970),
         L.latLng(47.258024, -122.444725)
     ],
-     routeWhileDragging: true
+     routeWhileDragging: true,
+// Part 2 Step 3: Change units from metric to imperial
+     units:'imperial',
+     collapsible: true,
+     show: false,
+// Part 2 Step 3: Changed Routing Service from OSRM to Mapbox Direction API &&
+     router: L.Routing.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g')
+
 }).addTo(map);
 
 

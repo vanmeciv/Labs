@@ -25,7 +25,7 @@ var control = L.Routing.control({
 // Part 2 Step 3: Changed Routing Service from OSRM to Mapbox Direction API &&
      router: L.Routing.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g'),
 // Part 2 Step 4: Add a geocoder so you can add waypoints by searching for an address or location
-     geocoder: L.Control.Geocoder.mapbox('yourAccessTokenGoesHere'),
+     geocoder: L.Control.Geocoder.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g'),
 }).addTo(map);
 // Part 2 Step 5: Add waypoints by clicking on the map
 function createButton(label, container) {
@@ -65,6 +65,8 @@ function onLocationFound(e) {
 
     L.circle(e.latlng, radius).addTo(map); //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
 }
+
+
 
 map.on('locationfound', onLocationFound); //this is the event listener
 
@@ -151,12 +153,12 @@ map.on('locationfound', onLocationFound); //this is the event listener
 //     }
 // }
 // //Lab 1 Step 2: Geolocation
-// map.on('locationfound', onLocationFound); //this is the event listener
-// //popup that runs if location denies access or other error
-// function onLocationError(e) {
-//   alert(e.message);
-// }
-// map.on('locationerror', onLocationError);
+map.on('locationfound', onLocationFound); //this is the event listener
+//popup that runs if location denies access or other error
+function onLocationError(e) {
+  alert(e.message);
+}
+map.on('locationerror', onLocationError);
 // //recenters the map on the user's location (browser dialogue box requesting location permissions)
 // // setView recenters map on user's location or world view
 // // watch detects continuous location changes -- requests location data for each browser page refresh
@@ -172,9 +174,9 @@ var win =  L.control.window(map,{title:'Geolocation',content:'This page requests
 // Adding hello world popup
 // var helloPopup = L.popup().setContent('Hello World!');
 //
-L.easyButton('<img src="img/easy-button.png">', function(btn, map){
-    helloPopup.setLatLng(map.getCenter()).openOn(map);
-}).addTo(map);
+// L.easyButton('<img src="img/easy-button.png">', function(btn, map){
+//     helloPopup.setLatLng(map.getCenter()).openOn(map);
+// }).addTo(map);
 // Step 5: Finishing Touches
 // Part 3 BONUS (run map.locate method on button click)
 // Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords

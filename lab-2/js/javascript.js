@@ -34,7 +34,6 @@ function createButton(label, container) {
     btn.innerHTML = label;
     return btn;
 }
-
 map.on('click', function(e) {
     var container = L.DomUtil.create('div'),
         startBtn = createButton('Start from this location', container),
@@ -65,11 +64,33 @@ function onLocationFound(e) {
 
     L.circle(e.latlng, radius).addTo(map); //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
 }
-
-
-
+// //Lab 2 Step 6: Geolocation
 map.on('locationfound', onLocationFound); //this is the event listener
+//popup that runs if location denies access or other error
+function onLocationError(e) {
+  alert(e.message);
+}
+map.on('locationerror', onLocationError);
+// //recenters the map on the user's location (browser dialogue box requesting location permissions)
+// // setView recenters map on user's location or world view
+// // watch detects continuous location changes -- requests location data for each browser page refresh
+// // watch: true may darken red circle depending upon how many times the user allows location collection
+map.locate({setView: true, watch: true, maxZoom: 16})
 
+// Creating window object
+var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly.'})
+           .show()
+// Adding hello world popup
+// var helloPopup = L.popup().setContent('Hello World!');
+//
+// L.easyButton('<img src="img/easy-button.png">', function(btn, map){
+//     helloPopup.setLatLng(map.getCenter()).openOn(map);
+// }).addTo(map);
+// Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords
+L.easyButton('fas fa-crosshairs', function(btn, map){
+  alert('Map center is at: ' + map.getCenter().toString())
+    helloPopup.setLatLng(map.getCenter()).openOn(map);
+}).addTo(map);
 
 
 // LAB 1
@@ -152,35 +173,3 @@ map.on('locationfound', onLocationFound); //this is the event listener
 //       map.addLayer(dark);
 //     }
 // }
-// //Lab 1 Step 2: Geolocation
-map.on('locationfound', onLocationFound); //this is the event listener
-//popup that runs if location denies access or other error
-function onLocationError(e) {
-  alert(e.message);
-}
-map.on('locationerror', onLocationError);
-// //recenters the map on the user's location (browser dialogue box requesting location permissions)
-// // setView recenters map on user's location or world view
-// // watch detects continuous location changes -- requests location data for each browser page refresh
-// // watch: true may darken red circle depending upon how many times the user allows location collection
-map.locate({setView: true, watch: true, maxZoom: 16})
-
-// Lab 1 Step 5: Finishing touches
-// Part 1: This alerts visitors of the page requesing location info
-// Creating window object
-var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly.'})
-           .show()
-// Part 3: Set up the map.locate method to run at the click of a button rather than on page load. (uses Easy Button Plugin: https://github.com/CliffCloud/Leaflet.EasyButton)
-// Adding hello world popup
-// var helloPopup = L.popup().setContent('Hello World!');
-//
-// L.easyButton('<img src="img/easy-button.png">', function(btn, map){
-//     helloPopup.setLatLng(map.getCenter()).openOn(map);
-// }).addTo(map);
-// Step 5: Finishing Touches
-// Part 3 BONUS (run map.locate method on button click)
-// Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords
-L.easyButton('fas fa-crosshairs', function(btn, map){
-  alert('Map center is at: ' + map.getCenter().toString())
-    helloPopup.setLatLng(map.getCenter()).openOn(map);
-}).addTo(map);

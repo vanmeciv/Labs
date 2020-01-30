@@ -1,194 +1,210 @@
-# Lab 1: Geolocation and mobile optimization with Leaflet
+# Lab 2: Routing with Leaflet and the Mapbox Directions API
 ## TGIS 504, Winter 2020, Dr. Emma Slager
 ### Introduction
-In this lab, you will practice making web maps that recognize and design for both the unique constraints of mobile devices and their unique affordances. You will create a map that places a marker on the map based on the locational information provided by the user's device, include signifiers that indicate to the user the accuracy of their device's locational information, add functionality that switches the base map between light and dark based on whether the sun is up at the user's location, and utilize various other design conventions that optimize mobile map use. This lab also asks you to read relevant documentation on the technologies used and to answer a few questions about that documentation in order to assess your understanding of its contents.
+In this lab, you'll hone your technical skills by building a routing application. You'll also practice the more qualitative skills of evaluation and critique by assessing different Leaflet plugin options and evaluating the mobile friendliness of a particular API. This lab uses the Leaflet mapping platform and a routing plugin, with additional functionality that is built on the Mapbox Directions API and Mapbox Geocoding API. All the files you need for this lab you will either create or download from the Internet. A list of deliverables is included at the end of these instructions.
 
-The first part of this lab is based on the tutorial [Leaflet on Mobile](https://leafletjs.com/examples/mobile), with modifications and additions by myself. 
-### Set up your workspace
-Begin by downloading the template files for the lab, including an index.html, javascript.js, and styles.css file. Save the files to your workspace,making sure to set up an appropriate folder structure for the new term's work. Open the files in Atom or the text editor of your choice. Eventually, you will upload the files to GitHub or your UW server space, so you may wish to create a repository for your files now, which also provides the benefit of serving as a backup for your work. As always, I recommend saving your work frequently and testing it regularly using atom-live-server or a similar Atom package. We will not be using any geojson files in this lab, so you won't have cross-origin issues and local testing will therefore also be possible.
+### Part 1: Working with and assesssing plugins
+As you know from previous coursework, the core set of Leaflet features is designed to be as lightweight as possible, and additional features are provided through plugins. The majority of these plugins are built not by Leaflet staff but by community members. This modularity and customizability is typical of open-source software and has many advantages, but it also means quality can vary from plugin to plugin, so being able to assess them is important. 
 
-### Step 1: Prepare the page and initialize the map
-In your index.html file, add the necessary links to Leaflet's CSS and JS libraries to the `head`. Per our discussion of the relative merits of CDNs versus locally hosted libraries last quarter, I recommend using a CDN in order to minimize bandwidth usage for best mobile performance: 
- ``` html
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
-  ```
- In the `body` of the index, create a `div` element to hold the map: 
-  ``` html
-  <div id="map"></div>
-  ```
-  Define the height and width of your map container in the CSS file and give the page some additional basic styling. Because we want to maximize screen real estate for the map itself, we'll set the height and width to 100%:
-  ```css
-  body {
-    padding: 0;
-    margin: 0;
-  }
+Navigate to the Routing section of the Leaflet Plugins page: https://leafletjs.com/plugins.html#routing. Here you’ll see a list of 8 different routing plugins. Leaflet provides the name and a link to an external website or GitHub repository with more information about the plugin, a brief description, and the name of the maintainer of the plugin. Pick three of these, and answer the following questions about each in your write up: 
+1.	Title and maintainer of plugin: 
+2.	What are the main functionalities of the plugin? 
+3.	When was the last commit pushed to the GitHub repo where the plugin can be downloaded? 
+4.	Do the developers provide a working demo of the plugin?
+5.	Based on the above information, how would you rank this in relation to the other two plugins you chose in terms of overall quality and usability? Justify your ranking. 
 
-html, body, #map {
-  height: 100%;
-  width: 100vw;
+### Part 2: Integrate routing in a Leaflet map
+Now that you’re a little more familiar with the routing plugins available for Leaflet, let’s integrate one into a Leaflet map. 
+#### Step 1: Choose a routing plugin and set up your workspace
+For basic routing functionality, I like Leaflet Routing Machine. Its latest version was released in November 2018, and the latest commit was made to its GitHub repository earlier this month. The documentation is more developed than many plugins, and there are working demos and even tutorials available. Let’s go with this one. As with most Leaflet libraries and plugins, we can download the necessary files (a CSS file and a JS file) for using Leaflet Routing Machine and host them ourselves, or we can find them on unpkg.com. We'll use the CDN unpkg.com version instead of downloading. 
+
+#### Step 2: Set up a minimal Leaflet map and initialize the routing plugin
+In a text editor like Atom, let's create our files: index.html, styles.css, and scripts.js. Save these in a new folder. As always, consider uploading your folder as a repository to GitHub now, or you can save this step until later when you're ready to put your work up on GitHub Pages. 
+
+Edit your index.html file to include basic header information, CDN links to the Leaflet CSS and JS files, and a div for holding your map: 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>give your page a title</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
+```
+Edit your styles.css file to include the following styling: 
+```css
+body {
+   padding: 0;
+   margin: 0;
 }
-  ```
-Initialize the map in the JavaScript file, setting the map to display the whole world. We'll use Mapbox tiles for the basemap. Be sure to replace `{accessToken}` with your own personal Mapbox access token:
-```javascript
-var map = L.map('map').fitWorld();
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+#map {
+   position: absolute;
+   width: 100vw;
+   height: 100%;
+}
+```
+In your index.html `<head>`, include a link to your styles.css file, and in the `<body>`, after you've created the map div, include a link to your scripts.js file. 
+  
+Next, initialize the map. Add the following code to your scripts.js file:
+```javascript
+var map = L.map('map').setView([47.25, -122.44], 11);
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18, 
-    id: 'mapbox/streets-v10',
+    maxZoom: 18,
+    id: 'mapbox/light-v10',
+    accessToken: 'yourAccessTokenGoesHere',
 }).addTo(map);
 ```
-### Step 2: Geolocation
-As we've discussed in lecture, we can access a device's location using the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) that is built into JavaScript. Leaflet makes accessing location even easier with its built-in [`locate` method](https://leafletjs.com/reference-1.6.0.html#map-locate). We can call this method with a single line of code, and when we do so, we can set [various options](https://leafletjs.com/reference-1.6.0.html#locate-options), such as `setView`, which, if true, recenters the map on the user's location, or `watch` which, if true, will continuously watch the device's location instead of detecting it just once. 
+You should now have an HTML page that loads a Leaflet map centered on the South Sound. The code you copied above uses the Mapbox light style for its basemap. However, this style doesn't have the best contrast, making it somewhat difficult to use in bright light environments. Change the basemap to another style--either a custom style or another basemap option made available by Mapbox or another tile service--that has high contrast and emphasizes roads over terrain or other features. 
 
-At the bottom of your JavaScript code, call the locate method with the following options: 
+Next let's add links to the CSS and JS files we need in order to initialize the routing plugin. In the 'Getting Started' section of the [Leaflet Routing Machine homepage](http://www.liedman.net/leaflet-routing-machine), you can find links to where the necessary CSS and JS files are accessible via unpkg.com. Copy those links into the `<head>` of your index. 
+
+Then, under the section of code that intiliazes your map in your scripts.js file, add the following code to initialize the routing plugin:
 ```javascript
-map.locate({setView: true, maxZoom: 16});
+      var control = L.Routing.control({
+          waypoints: [
+              L.latLng(47.246587, -122.438830),
+              L.latLng(47.318017, -122.542970)
+          ],
+           routeWhileDragging: true
+      }).addTo(map);
 ```
-Here we set the maxZoom to 16, which preserves some spatial context even if a user's device gives location information that is precise enough that the setView option could zoom in further. Save your work and test the page. If everything is working as expected, the map should recenter and zoom to your location. Note that you need to give the webpage permission to access your location information before the map can access it. 
-#### A quick aside 
-You may notice that the text on your map is very difficult to read when zoomed in. This has something to do with retina screen detection errors and tile size (see more in a Stack Overflow thread [here](https://stackoverflow.com/questions/37040494/street-labels-in-mapbox-tile-layer-too-small)). If this happens for you, add the following options to your tile layer where you call it with the L.tileLayer method, below where you specify attribution, maxZoom, and id:
+This code initializes the routing control and adds it to the map. The waypoints option defines the start and stop points, while the routeWhileDragging: true option allows you to change the markers at the start and stop points by dragging them. Save your work and preview in a browser. You should see a map with markers at either end of a route and directions from Pinkerton Hall to Point Defiance. Try adding a third point at latitude and longitude 47.258024,  -122.444725. Aha, now you can get baked goods at Corina Bakery on the way to the park.
+#### Step 3: Modifying options for the routing control
+
+If you aren’t testing in Google Chrome, switch browsers now and open up the console in Google Developer Tools. You should see the warning below:
+
+![console message](console-message.png)
+
+By default, Leaflet Routing Machine uses routing software from the Open Source Routing Machine (OSRM, website: http://project-osrm.org/). They provide a demo server for testing with their product, but it often gets overloaded by calls from everyone in the world running tests with it (you may have already run into an HTTP 429 error telling you the server had too much traffic while testing). If you want to use OSRM in production you need to build and host your own server. This is a more complicated process than we can cover in one lab, so instead, we’ll change our routing service from OSRM to the Mapbox Directions API. As an option when you initialize the routing control, add the following line of code: 
 ```javascript
-    tileSize: 512,
-    zoomOffset: -1,
+router: L.Routing.mapbox('your-access-token-here'),
 ```
-#### Now back to Geolocation
+Insert your access token where requested, save, and open in Chrome. View the console in Developer Tools and you should no longer see the OSRM warning. Mapbox Directions API limits your free usage to 50,000 geolocation requests per month. The limit is more than sufficient for our purposes, but if you were to use this in a commercial product, you might exceed this and either pay for more usage or use a different routing service. 
 
-What if we want to do more than recenter and zoom the map after we've located the user's device? No sweat! Built into the `locate` method are two events that can fire after the method runs, `locationfound` and `locationerror`. We can write functions that will run if the location is found or if there is an error when the `locate` method tries to find the location (for instance, if the user doesn't give permission for the webpage to access their location).
+There are various options built in to the Routing control that we can change to modify the application. Find a full list of these options in the plugin's documentation here: http://www.liedman.net/leaflet-routing-machine/api/ Note that the L.Routing.control class extends the L.Routing.interface class, so any of the options available under L.Routing.interface can also be used when we intialize L.Routing.control. Let's use a couple of these. 
 
-Let's say we want to add a marker at the user's location if geolocation is successful and show an error message if geolocation fails. We can do so by writing functions and adding event listeners to our code. Note that the event listeners need to be included *before* the `map.locate` call! Add the following code before the `map.locate({setView: true, maxZoom: 16});` line. Read the comments to understand what the code is doing:
-
+First, change the units from metric to imperial by adding the following key-value pair as an option when you intialize the control: 
 ```javascript
-function onLocationFound(e) {
-    var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
+units:'imperial',
+```
 
-    L.marker(e.latlng).addTo(map)  //this adds a marker at the lat and long returned by the locate function. 
-        .bindPopup("You are within " + Math.round(radius * 3.28084) + " feet from this point").openPopup(); //this binds a popup to the marker. The text of the popup is defined here as well. Note that we multiply the radius by 3.28084 to convert the radius from meters to feet and that we use Math.round to round the conversion to the nearest whole number. 
+Next, let's make the control collapsible, since this will allow the user to maximize screen real estate for the map itself. Add this option: 
+```javascript
+collapsible: true,
+```
+Now, review the documentation to figure out how you can set the control to be collapsed (not showing) when the map first loads and edit your code to achieve this. Hint: this is a boolean option available under the L.Routing.itinerary section. 
 
-    L.circle(e.latlng, radius).addTo(map); //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
+#### Step 4: Add a geocoder so you can add waypoints by searching for an address or location
+Routing software is only able to look up routes between coordinate pairs. Thus, if users want to find routes between addresses or other locations described as a string of text, we need a geocoder that can turn that address string into a coordinate pair. For this, we add a geocoding service as a plugin to extend our Leaflet Routing Machine plugin. It’s plugins on plugins, y’all! 
+
+The person who developed Leaflet Routing Machine also developed a Leaflet geocoder plugin that can be easily combined with the routing machine. It is called Leaflet Control Geocoder, and it can be used with many different geocoding services, such as [Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim), [Bing Locations API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/), [Google Geolocating API](https://developers.google.com/maps/documentation/geocoding/start), or [Mapbox Geocoding API](https://docs.mapbox.com/api/search/), among others. Since we're using Mapbox for directions, let's also use its geocoding service. 
+
+To include the geocoder plugin, we first need to add links to its CSS and JS files in our index.html page. We’ll use unpkg again, though we could also download and store these locally. Add the following links to your index.html. I recommend keeping all your CSS files together and all your JS files together: 
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+```
+Next, we initialize the plugin by adding the control to a map instance. As an option when you initialize the routing control, add the following line of code, adding your mapbox access token where requested:
+```javascript
+  geocoder: L.Control.Geocoder.mapbox('yourAccessTokenGoesHere'),
+```
+Test this out. Your routing control should now include text boxes where you can search for locations that are geocoded and available for routing. Note that there are again options that you can change to modify the geocoder's behavior. Find the list of these options in the documentation here: https://github.com/perliedman/leaflet-control-geocoder#api.
+
+#### Step 5: Add waypoints by clicking on the map
+By default, the Leaflet Routing Machine does not allow a user to add waypoints by clicking on the map. However, this could be a useful functionality. Let’s add it. We’ll do this by creating a popup when the map is clicked that gives buttons for ‘start from this location’ or ‘go to this location’, then add some functions for when those buttons are clicked to get the route. In your scripts.js file, add the following: 
+```javascript
+function createButton(label, container) {
+    var btn = L.DomUtil.create('button', '', container);
+    btn.setAttribute('type', 'button');
+    btn.innerHTML = label;
+    return btn;
 }
 
-map.on('locationfound', onLocationFound); //this is the event listener 
+map.on('click', function(e) {
+    var container = L.DomUtil.create('div'),
+        startBtn = createButton('Start from this location', container),
+        destBtn = createButton('Go to this location', container);
+
+    L.popup()
+        .setContent(container)
+        .setLatLng(e.latlng)
+        .openOn(map);  
+ });
+ ```
+This code uses functionality built into JavaScript itself and into Leaflet itself to build a little user interface. When the map is clicked, the code creates a popup that contains two buttons, one called `startBtn` and one called `destBtn`. Save your work and test this out. Clicking the map produces the popup with buttons, but if you click the buttons, nothing happens. Let’s change that. 
+
+When the “Start from this location” button is clicked, the first waypoint of the route should be replaced with the location that the user clicked on. Modifying the waypoints can be done with the method spliceWaypoints, which mimics the behavior of [JavaScript’s Array.splice](https://www.w3schools.com/jsref/jsref_splice.asp). To replace the first waypoint, you tell Leaflet Routing Machine to remove one waypoint at index 0 (the first), and then add a new at the clicked location. Add this code inside the map’s click event handler; e will refer to the click event, and e.latlng is the location clicked:
+```javascript
+    L.DomEvent.on(startBtn, 'click', function() {
+        control.spliceWaypoints(0, 1, e.latlng);
+        map.closePopup();
+    });
 ```
-Next, we'll write a function that will run if the `locationerror` event fires. 
+Save and test. Your startBtn should now do something, but your destBtn won’t yet. Add another section of code inside the map's click event handler to add functionality to that button:
 ```javascript
-function onLocationError(e) {
-  alert(e.message);
-}
+    L.DomEvent.on(destBtn, 'click', function() {
+        control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
+        control.show();
+        map.closePopup();
+    });
+ ```
+Observe that after this section of code modifies the array of `waypoints` in the `control` variable, it also uses a method called `control.show()` to expand the control from its initial collapsed position. After each button is clicked, the function also closes the popup. 
 
-map.on('locationerror', onLocationError);
-
+Now that you’ve added the ability to get waypoints by clicking on the map, let’s get rid of the initial waypoints. In the part of your code where you initialize your routing control, comment out the starting waypoints and add the value null instead. Your code should look like this: 
+```javascript
+waypoints: [
+            null
+              //L.latLng(47.246587, -122.438830),
+              //L.latLng(47.258024, -122.444725),
+              //L.latLng(47.318017, -122.542970)
+          ],
 ```
-The message that displays will depend on the error; you can also find these errors in the JavaScript console in your web browser. I like to organize my code so that my functions are together and my event listeners are together right before the `map.locate` code, but you may organize things how you prefer. 
+Save and test. Is the ability to click on the map to create waypoints sufficiently discoverable? I don’t think it is. Make some changes to your map to make it more so. There are many ways to do this—you could create an overlay on your Leaflet map with instructions, set an initial starting waypoint with a popup that tells the user to click the map to change its location, etc. Come up with some way of improving the discoverability of your map, and explain the change you made in your write up. 
 
-At this point, you've basically completed the Leaflet on Mobile tutorial and your map should look something like their [complete example](https://leafletjs.com/examples/mobile/example.html) but with some custom improvements. 
+#### Step 6: add geolocation
+Based on what you’ve learned in last lab and this lab, add functionality that will enable the user to zoom to their current location in case they want to use it as one of their waypoints. This will require using the map.locate function, which is built into Leaflet. I also recommend using the [EasyButton plugin](https://github.com/CliffCloud/Leaflet.EasyButton) to add your button, though it is not required. 
 
-### Step 3: Giving the user feedback about the geolocation accuracy of their device
-You've made some good progress on the lab. Well done. You've been doing your development and testing on a laptop or desktop computer; now, take a moment to test out your work on your mobile device. Upload your HTML, JS, and CSS files as a repository to GitHub and enable Pages for the repository (or, if you prefer, transfer your files to your UW server space using SFTP). After your files have uploaded, visit the URL where they are hosted test things out, comparing what displays to what you see on your computer. In all likelihood, the radius of the circle you get with your mobile device is much smaller than the radius of the circle you get with your computer. This is because your mobile device has GPS, which provides much greater locational accuracy than the IP address the webpage accesses to geolocate your computer. The size of the circle is one form of **feedback** that our web map gives the user to understand the accuracy of their geolocation. But let's add a second form of feedback to make this even more clear to the user. We'll use conditional styling to change the color of the circle if the accuracy is above a certain level of accuracy--green if it's accurate within 100 meters and red if it's less accurate than that. 
+#### Step 7: host your map online
+Your final output for this part of the lab should be a Leaflet map with the following features/functionalities:
+* Draggable markers
+* Units in miles
+* collapsable control that is hidden on initial map load
+* Geocoder to enable searching for locations
+* Clickable buttons to create waypoints 
+* Some modification that makes clickable functionality more discoverable
+* The ability to zoom to current location 
 
-In the function `onLocationFound` replace the line of code that reads `L.circle(e.latlng, radius).addTo(map);` with the following: 
-```javascript
-if (radius <= 100) {
-      L.circle(e.latlng, radius, [color: 'green'}).addTo(map);
-  }
-  else{
-      L.circle(e.latlng, radius, {color: 'red'}).addTo(mymap);
-  }
-  ```
-  Here we add styling the circle instead of using the blue color that is the default in Leaflet. The style is set based on a conditional operator: **if** the circle's radius (which is determined by the accuracy reading returned by the locate method) is less than or equal to 100, the circle will be green. **Else** if the radius is greater than 100, the circle will be red. ****Beware***Before you test this change out, note that I've included two small errors in the code block above that you need to correct before the code will function. Just trying to keep you on your toes! 
-  
-### Step 4: Changing the basemap based on environmental conditions
+Please host your map on GitHub Pages or your UW server space and include a link to its location in your lab write-up. 
 
-As this week's readings noted, a significant constraint of mobile mapping is that environmental conditions can impact useability; thus, for instance, we tend to prefer high contrast color schemes to improve readability of maps in bright light, since many people use mobile maps outdoors and not just at climate controlled desktop computers. In the final step of creating a map that is optimized for mobile use, we're going to add functionality that switches between a light and dark themed base map, depending on the user's environmental condtions. If it's during daylight hours in the time and place that your user is viewing your map, the basemap will be Mapbox's light map, and if it's not during daylight hours, the basemap will be Mapbox's dark map. 
+### Part 3: Evaluating and critiquing mobile friendliness
+Though Leaflet Routing Machine is a fairly good plugin, one major disadvantage is that the CSS file its maintainer makes available is not optimized for mobile browsing. In fact, let’s test this. Go view the map you made in Part 2 on your mobile device. Not great. In your browser, open up the leaflet-routing-machine.css file at its location on unpkg.com: https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css. Notice that widths, heights, and font sizes are defined in pixels rather than in relative units like percents or ems and that there is very little attempt to implement responsive design. 
 
-First, we need to load tile layers for both the light and dark Mapbox styles. At the top of your JavaScript code, replace the lines where you add the `L.tileLayer` with the `id:'mapbox/streets-v10',` with the following code: 
-```javascript
-var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id:'mapbox/light-v10',
-    tileSize: 512,
-    zoomOffset: -1,
-});
+I won’t ask you to rebuild this CSS file to make it mobile-friendly, but thinking back to the unit on responsive design and design conventions for mobile maps, please write a paragraph in your lab-write up that includes five specific suggestions for how you would modify the CSS to make Leaflet Routing Machine mobile-friendly. 
 
-var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWpzbGFnZXIiLCJhIjoiZUMtVjV1ZyJ9.2uJjlUi0OttNighmI-8ZlQ', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id:'mapbox/dark-v10',
-    tileSize: 512,
-    zoomOffset: -1,
-});
-```
-We are replacing the single tile layer that used the Mapbox Streets style with two tile layers, one that uses the light style and one that uses the dark style. Note also that we have made each tile layer into a variable, which we have given the names `light` and `dark`, and that we have removed the method `addTo(map)` from the end of each section of code. 
+### Deliverables
+**Part 1**: 
 
-Next, we need to initialize the map with one of the two tile layers. Let's choose light. Change the first line of the JavaScript code, where you initialize the map object, so that it reads as follows: 
+Answer the following questions about three different routing plugins that can work with Leaflet.
+1.	Title and maintainer of the plugin: 
+2.	What are the main functionalities of the plugin? 
+3.	When was the last commit pushed to the GitHub repo where the plugin can be downloaded? 
+4.	Do the developers provide a working demo of the plugin?
+5.	Based on the above information, how would you rank this in relation to the other two plugins you chose in terms of overall quality and usability? Justify your ranking. 
 
-```javascript
-var map = L.map('map', {layers:[light]}).fitWorld();
-```
-Then, move that line **below** the sections of code that add the two tile layers. Your map should load with the Mapbox Light style instead of the Streets style now. 
+**Part 2**: 
+* Include a link to the URL of the map you built in Part 2
+* Explain how you modified your map to improve the discoverability of the waypoint creating affordance.
 
-But how do we get the basemap to change based on today's sunset and sunrise times in the user's location? Let's break this task down into component steps: 
-1. figure out what the user's current location is and what the current date is 
-2. figure out what time the sun rises and sets in the user's location on the current date 
-3. figure out what the current time is and determine if the sun is currently up or if it is set
-4. style the basemap conditionally based on the sun's position
+**Part 3**: 
 
-Believe it or not, this is pretty easy to do with JavaScript. To make it even easier, we're going to use a library called SunCalc that was developed by the same person who developed Leaflet, Vladimir Agafonkin. 
+Drawing on the unit on responsive design and design conventions for mobile maps (Week 2), write a paragraph that includes five specific suggestions for how you would modify the CSS to make Leaflet Routing Machine mobile-friendly.
 
-Check out the [documentation for SunCalc](https://github.com/mourner/suncalc) and view a live example [here](http://suncalc.net/). In the Reference section, you'll see that if we use SunCalc's method `getTimes` and provide option parameters for the `date`, `latitude`, and `longitude`, the method will return information on sunrise time and sunset time, among other pieces of information. But how do we provide the parameters for date, lat, and lon based on the user's geolocation and the current date? 
-
-The date is the easiest to get, since JavaScript can provide this for us. We can simply create a Date object with `new Date()`. For more on this, see [this documentation](https://www.w3schools.com/jsref/jsref_obj_date.asp). The latitude and longitude are also fairly easy to get, since they are returned when Leaflet's `map.locate` method runs. 
-
-Inside the `onLocationFound` function in your JavaScript code, after the if/else statement that sets the color's circle but before the `}` that ends the function, add the following code: 
-```javascript
-var times = SunCalc.getTimes(new Date(), e.latitude, e.longitude);
-var sunrise = times.sunrise.getHours();
-var sunset = times.sunset.getHours();
-
-
-var currentTime = new Date().getHours();
-    if (sunrise < currentTime && currentTime < sunset){
-      map.removeLayer(dark);
-      map.addLayer(light);
-    }
-    else {
-      map.removeLayer(light);
-      map.addLayer(dark);
-    }
-  ```
-The first line of code (`var times`...) is using the SunCalc library to return all of the information about sunrise, sunset, dusk, dawn, solar noon, etc. for the date, latitude, and longitude parameters that are specified. We specify that the date parameter should be the current date by using JavaScripts `new Date()` constructor; we specify that latitude and longitude are the lat and lon returned by `map.locate` with `e.latitude` and `e.longitude` by placing this code inside the `onLocationFound(e)` function we wrote previously in Step 2. 
-
-Since `getTimes` returns a lot more information than we need, we pull out just the time of sunrise and sunset and declare them as variables in the next two lines of code. We use .getHours() to specify that we only want the hour of sunset and sunrise, not the full Hours, Minutes, and Seconds that SunCalc provides. 
-
-Next, we get the current time by again using the `new Date` constructor and specifying that we want just the current hour of the current date and time with `getHours()`. Finally, using an in/then conditional statement, we remove and add baselayers based on whether the current hour falls between sunrise and sunset. 
-
-Easy right? :) 
-
-But none of this will actually work if we don't also include a link to the SunCalc library in our index. If you've made the changes specified above and test your map, you won't see any changes, even if it's after sunset. If you open Developer Tools and view the JavaScript console, you'll see the following error: `Uncaught ReferenceError: SunCalc is not defined`. As far as I know, SunCalc is not available on a Content Delivery Network, so we'll have to download the library from GitHub and host it locally. 
-
-From the [SunCalc Github page](https://github.com/mourner/suncalc), click the green 'Clone or download' button and download the ZIP. Extract just the `suncalc.js` file and save it in the same folder where the rest of your lab files are stored. Link to this file using a `<script>` tag in the `head` of your index.html file and test it again. Et voila!
-
-### Step 5: Finishing touches
-
-To complete your map, please do the following: 
-1. Create an alert window that displays on load or add explanatory text at the top of your webpage to explain that your page will ask the user for their location information. Tell them why it will do this and that you will not store or share their location information.
-2. Add a layer control that allows the user to manually switch between light and dark basemaps, in case the automatically selected basemap isn't to their liking. You can do this without any additional Leaflet plugins. See [this tutorial](https://leafletjs.com/examples/layers-control/) for further help. 
-3. BONUS: Set up the map.locate method to run at the click of a button rather than on page load. The [L.EasyButton plugin](https://github.com/CliffCloud/Leaflet.EasyButton) is an excellent way to do this. 
-
-As always, reach out to me and one another for assistance as needed. 
-
-### Submission
-Submit a link to your final work on Canvas along with brief answers to the following questions: 
-1. Regarding Leaflet's map.locate method (documentation [here](https://leafletjs.com/reference-1.6.0.html#locate-options)), if we don't specify any options when we call the method, will the map recenter if geolocation is found? (Hint: what is the default parameter for the setView option?)
-2. Answers to the following questions about the Geolocation API documentation (https://www.w3.org/TR/geolocation-API/): 
-
-   a.	What is the confidence level on the accuracy value returned by the API?
-
-   b.	In this lab, we haven't access data on the heading (or direction of travel) of the device, but using the Geolocation API, we could. If the Geolocation API returned a heading reading of 135, what direction would the device be facing?
-3. Once you've uploaded your final map to GitHub Pages or your UW server space, test the map on two different browsers on your computer and two different browsers on your mobile device. List the browsers you ran your test with and briefly describe the differences in user experience among the various options. Did you run into any bugs while testing? If so, explain. 

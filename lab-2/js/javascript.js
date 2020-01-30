@@ -1,6 +1,5 @@
 // LAB 2
 //
-//
 // instructions for building this .js found here: https://github.com/UWTMGIS/TGIS_504-Wi20/blob/master/lab-2/instructions.md#lab-2-routing-with-leaflet-and-the-mapbox-directions-api
 var map = L.map('map').setView([47.25, -122.44], 11);
 
@@ -26,6 +25,7 @@ var control = L.Routing.control({
      router: L.Routing.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g'),
 // Part 2 Step 4: Add a geocoder so you can add waypoints by searching for an address or location
      geocoder: L.Control.Geocoder.mapbox('pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrMnpqYnVxaTA1b3IzbXBnaG5zY3o3eTEifQ.kMdIcXYBFKHTorj3Hxgi7g'),
+     
 }).addTo(map);
 // Part 2 Step 5: Add waypoints by clicking on the map
 function createButton(label, container) {
@@ -55,7 +55,6 @@ map.on('click', function(e) {
         .setLatLng(e.latlng)
         .openOn(map);
  });
-map.locate({setView: true, watch: true, maxZoom: 16})
 function onLocationFound(e) {
     var radius = e.accuracy; //this defines a variable radius as the accuracy value returned by the locate method divided by 2. It is divided by 2 because the accuracy value is the sum of the estimated accuracy of the latitude plus the estimated accuracy of the longitude. The unit is meters.
 
@@ -75,7 +74,7 @@ map.on('locationerror', onLocationError);
 // // setView recenters map on user's location or world view
 // // watch detects continuous location changes -- requests location data for each browser page refresh
 // // watch: true may darken red circle depending upon how many times the user allows location collection
-map.locate({setView: true, watch: true, maxZoom: 16})
+map.locate({setView: true, watch: false, maxZoom: 16})
 
 // Creating window object
 var win =  L.control.window(map,{title:'Geolocation',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly.'})
@@ -87,10 +86,17 @@ var win =  L.control.window(map,{title:'Geolocation',content:'This page requests
 //     helloPopup.setLatLng(map.getCenter()).openOn(map);
 // }).addTo(map);
 // Add crosshairs (from fontAwesome) button that gives browser alert for the map center coords
+// easyButton plugin requests an additional
 L.easyButton('fas fa-crosshairs', function(btn, map){
-  alert('Map center is at: ' + map.getCenter().toString())
-    helloPopup.setLatLng(map.getCenter()).openOn(map);
+  map.locate({setView: true, watch: false, maxZoom: 16}),
+  alert('Map center is at: ' + map.getCenter().toString() +  '. Click OK to zoom to your location.')
+
+
 }).addTo(map);
+
+
+
+
 
 
 // LAB 1

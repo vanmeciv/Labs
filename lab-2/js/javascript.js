@@ -76,7 +76,7 @@ map.on('locationerror', onLocationError);
 map.locate({setView: true, watch: false, maxZoom: 16})
 
 // Creating window object
-var win =  L.control.window(map,{title:'<h1>Geolocation<h1><h5>(This window is draggable.)<h5>',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly. <br><br> If you want to center the map on your location, click the <i class="fa fa-crosshairs" aria-hidden="true"></i> button.'})
+var win =  L.control.window(map,{title:'<h1>Geolocation<h1><h5>(This window is draggable.)<h5>',content:'This page requests your location information in order to show a circle displaying your approximate proximity to a nearby marker. This site DOES NOT store or share their location information. <br><br> From your mobile device, enable location settings. <br><br> From a desktop select Allow to continue and close out of this window. Selecting Block will not allow this page to load correctly. <br><br> If you want to center the map on your location, click the <i class="fa fa-crosshairs" aria-hidden="true"></i> button.<br>Use the <img src="img/routing-icon.png" alt="waypoints"> button for selected new destinations.'})
            .show()
 // Adding hello world popup
 // var helloPopup = L.popup().setContent('Hello World!');

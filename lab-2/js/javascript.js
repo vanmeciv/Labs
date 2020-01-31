@@ -63,7 +63,7 @@ function onLocationFound(e) {
     L.circle(e.latlng, radius).addTo(map); //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
 }
 // //Lab 2 Step 6: Geolocation
-map.on('locationfound', onLocationFound); //this is the event listener
+map.once('locationfound', onLocationFound); //this is the event listener
 //popup that runs if location denies access or other error
 function onLocationError(e) {
   alert(e.message);

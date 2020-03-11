@@ -4,16 +4,27 @@
     <title>Lab 5 Exercises</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js'></script>
   </head>
   <body>
     <div class="wrapper">
       <h1>World population over time</h1>
       <h2>Number of people (in millions) living on earth, the last 500 years</h2>
-
+      <canvas id="myChart" width="1600" height="900"></canvas>
 
     </div>
 
+    <div class="wrapperTwo">
+      <h1>Reported Fatality Rate of COVID-19 by Country</h1>
+      <h2>This data is approximate and from March 2, 2020</h2>
+      <canvas id="myChartTwo" width="1600" height="900"></canvas>
+      <p id="covid">The data presented here is likely skewed by the actual number of reported cases and the on-hand availability of said data to/from outside countries. Additionally, sanitation standards and reporting requirements are different for every country. CDC and other medical boards around the US require certain information be made avialable to the public for safety and this is not always a requirement for other countries.
+      </p>
+    </div>
+
     <script src="script.js"></script>
+
+
   </body>
   <!-- Thanks to Tobias Ahlin, whose chart.js tutorial forms the basis of the line graph portion of this exercise -->
 </html>

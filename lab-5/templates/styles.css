@@ -1,8 +1,9 @@
 body {
   font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
-  background-image: url("https://www.publicdomainpictures.net/pictures/170000/velka/dollars-background-1462001697eaO.jpg");
+  /* background-image: url("https://www.publicdomainpictures.net/pictures/170000/velka/dollars-background-1462001697eaO.jpg");
   background-color: #cccccc;
+  background-size: 300px; */
 }
 
 .wrapper {
@@ -11,6 +12,16 @@ body {
 }
 
 .wrapperTwo {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.wrapperThree {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.wrapperFour {
   max-width: 800px;
   margin: 50px auto;
 }

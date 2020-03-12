@@ -20,13 +20,15 @@ var myChartOne = new Chart(ctx, {
         data: deficit,
         label: "Deficit",
         borderColor: "#3e95cd",
-        fill: false
+        fill: false,
+        borderWidth: 4
       },
       {
         data: debtIncrease,
         label: "Debt Increase",
         borderColor: "#8e5ea2",
-        fill: false
+        fill: false,
+        borderWidth: 4
       }
     ]
   },
@@ -108,7 +110,7 @@ var myChartTwo = new Chart(ctx, {
 // labels along the x-axis
 var ages = [0,10,20,30,40,50,60,70,80,90,100];
 // For drawing the lines
-var wuhan = [0.4,0.4,4.5,13.1,45.6,22.0,26.5,12.6,4.5,0.5];
+var wuhan = [0.4,0.4,4.5,13.1,15.6,22.0,26.5,12.6,4.5,0.5];
 var hubei = [0.4,0.7,6.6,15.4,18.3,23.4,21.4,10.1,3.3,0.3];
 var china = [0.9,1.2,8.1,17.0,19.2,22.4,8.8,2.9,0.3];
 // var latinAmerica = [40,20,10,16,24,38,74,167,508,784];
@@ -164,7 +166,7 @@ new Chart(document.getElementById("myChartFour"), {
       labels: ["0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"],
       datasets: [
         {
-          label: "Confirmed Cases",
+          label: "Confirmed Cases (44,672)",
           fill: true,
           backgroundColor: "rgba(179,181,198,0.2)",
           borderColor: "rgba(179,181,198,1)",
@@ -172,7 +174,7 @@ new Chart(document.getElementById("myChartFour"), {
           pointBackgroundColor: "rgba(179,181,198,1)",
           data: [416,549,3619,7600,8571,10008,8583,3918,1408]
         }, {
-          label: "Deaths",
+          label: "Deaths (1,023)",
           fill: true,
           backgroundColor: "rgba(255,99,132,0.2)",
           borderColor: "rgba(255,99,132,1)",
@@ -186,7 +188,7 @@ new Chart(document.getElementById("myChartFour"), {
     options: {
       title: {
         display: true,
-        text: 'Age Distribution in China'
+        text: 'Age Distribution in China (Click "Confirmed Cases (44,672)" for more context)'
       }
     }
 });

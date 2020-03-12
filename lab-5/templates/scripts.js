@@ -28,7 +28,32 @@ var myChart = new Chart(ctx, {
         fill: false
       }
     ]
-  }
+  },
+  options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return '$' + value;
+                    }
+                }
+            }]
+        }
+    },
+        tooltips: {
+            callbacks: {
+                labelColor: function(tooltipItem, chart) {
+                    return {
+                        borderColor: 'rgb(142, 94, 162)',
+                        backgroundColor: 'rgb(142, 94, 162)'
+                    };
+                },
+                labelTextColor: function(tooltipItem, chart) {
+                    return '#8e5ea2';
+                }
+            }
+        }
 });
 
 
@@ -62,5 +87,17 @@ var myChartTwo = new Chart(ctx, {
         fill: false
       }
     ]
-  }
+  },
+  options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return '$' + value;
+                    }
+                }
+            }]
+        }
+    }
 });

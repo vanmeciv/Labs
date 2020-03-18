@@ -139,7 +139,7 @@ var myChartThree = new Chart(ctx, {
       {
         data: china,
         label: "China",
-        borderColor: "#8e5ea2",
+        borderColor: "#ff0000",
         fill: false
       }
     ]

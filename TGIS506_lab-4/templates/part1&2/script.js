@@ -80,6 +80,8 @@ var myChartTwo = new Chart(ctx, {
 
 var pokemonTypes = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
 var typeNums = [69, 30, 19, 43, 16, 26, 46, 4, 31, 69, 31, 23, 96, 27, 56, 43, 26, 111]
+// For some odd reason the next line and last line in this code requires the windows.onload function, but the others do not
+// https://stackoverflow.com/questions/50230330/chart-js-not-showing-up-on-online-site/54332191
 window.onload = function() {
   var ctx = document.getElementById("pokemon");
   var pokemon = new Chart(ctx, {

@@ -5,21 +5,64 @@ window.onload = function() {
       type: 'bar',
       data: {
           datasets: [{
-              label: 'Bar Dataset',
-              data: [10, 20, 30, 40],
+              label: 'Reported COVID-19 Deaths',
+              data: [11831,8697,70,7402,4403,18,208,7136,42,124,5436,700,23003,487,2403,1963,15264,18756,2042,261,701,25,7117,3954,3275,1178,139,1174,23165,4848,2477,8969,1348,1468,19,2,266,101,1438,1077,268,141,21,772,8344,877,14669,339,441,3161,754,1711,24264,121,3266,509,3045,24,391,1051,253,327,249,920,56],
               // this dataset is drawn below
-              order: 1
+              order: 2
           }, {
-              label: 'Line Dataset',
-              data: [50, 50, 50, 50],
+              label: '2017 Non-Hygeinic Population',
+              data: [3290,731,41,360,233,1,152,4234,1,26,4634,530,7001,87,2026,93,4429,125,55,116,284,19,1191,102,1702,1047,16,186,6826,74,1165,21,540,27,2,2,259,16,34,249,54,31,3,7,2125,20,1429,290,198,1697,440,959,3011,10,153,86,236,2,303,173,119,5,62,533,1],
 
               // Changes this dataset to become a line
               type: 'line',
               // this dataset is drawn on top
-              order: 2
+              order: 1
           }],
-          labels: ['January', 'February', 'March', 'April']
-      },
+          labels: ["Afghanistan","Algeria","Angola","Armenia","Azerbaijan","Belize","Benin","Bolivia","Burundi","Cambodia","Cameroon","Chad","Colombia","Congo (Brazzaville)","Congo (Kinshasa)","Cuba","Dominican Republic","Egypt","El Salvador","Eswatini","Ethiopia","Gambia","Ghana","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Indonesia","Iraq","Ivory Coast", "Kazakhstan","Kenya","Kyrgyzstan","Laos","Lesotho","Liberia","Malawi","Maldives","Mali","Mauritania","Mongolia","Namibia","Nepal","Nigeria","Paraguay","Philippines","Rwanda","Sao Tome and Principe","Senegal","Sierra Leone","Somalia","South Africa","Syria","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tunisia","Uganda","Vietnam","Yemen","Zambia","Zimbabwe"]},
+      options: {
+
+              responsive: true,
+      				title: {
+      					display: true,
+      					text: 'Min and Max Settings'
+      				},
+      				scales: {
+      					yAxes: [{
+      						ticks: {
+      							// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
+      							suggestedMin: 1,
+
+      							// the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
+      							suggestedMax: 25000,
+                    stepSize: 500,
+                    showLines: true,
+                    padding: 10,
+                    beginAtZero:true,
+                    userCallback: function(value, index, values) {
+                        value = value.toString();
+                        value = value.split(/(?=(?:...)*$)/);
+                        value = value.join(',');
+                        return value;
+                    }
+      						}
+      					}],
+                xAxes: [{
+                  ticks: {
+                    // the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
+                    suggestedMin: 1,
+
+                    // the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
+                    suggestedMax: 25000,
+                    stepSize: 1,
+                    showLines: true,
+                    padding: 5,
+                    minRotation: 90,
+                    maxRotation: 90,
+                    fontSize: 8
+                  }
+                }]
+      				}
+      			}
 
   });
 

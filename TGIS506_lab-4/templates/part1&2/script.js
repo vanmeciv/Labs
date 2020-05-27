@@ -80,21 +80,22 @@ var myChartTwo = new Chart(ctx, {
 
 var pokemonTypes = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
 var typeNums = [69, 30, 19, 43, 16, 26, 46, 4, 31, 69, 31, 23, 96, 27, 56, 43, 26, 111]
-
-var ctx = document.getElementById("pokemon");
-var pokemon = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: pokemonTypes,
-    datasets: [
-      {
-        label: "Number of Pokemon",
-        backgroundColor: "#3e95cd",
-        data: typeNums
+window.onload = function() {
+  var ctx = document.getElementById("pokemon");
+  var pokemon = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: pokemonTypes,
+      datasets: [
+        {
+          label: "Number of Pokemon",
+          backgroundColor: "#3e95cd",
+          data: typeNums
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
       }
-    ]
-  },
-  options: {
-    legend: { display: false },
-    }
-  });
+    });
+};

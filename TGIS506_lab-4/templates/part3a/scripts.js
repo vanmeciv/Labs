@@ -37,7 +37,7 @@ window.onload = function() {
               responsive: true,
       				title: {
       					display: true,
-      					text: 'Click layers below or hover over points and bars for tooltip'
+      					text: 'Click or hover over points and bars for tooltip'
       				},
       				scales: {
       					yAxes: [{

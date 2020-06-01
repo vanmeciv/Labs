@@ -10,7 +10,7 @@ body {
 .wrapperTwo {
   max-width: 66%;
   padding-left: 15%;
-  padding-top: 15%;
+  padding-top: 13%;
   /* margin: 50px auto; */
 }
 
@@ -37,5 +37,5 @@ a {
 
 canvas {
   margin-bottom: 20px;
-  height: 45%;
+  height: 55%;
 }

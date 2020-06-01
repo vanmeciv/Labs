@@ -1,0 +1,82 @@
+pro sports seasons start & end dates (2009-2019):
+
+NFL (Avg days = 
+	September 10, 2009 - February 7, 2010
+	September 9, 2010 - February 6, 2011
+	September 8, 2011 - February 5, 2012
+	September 5, 2012 - February 3, 2013
+	September 5, 2013 - February 2, 2014
+	September 4, 2014 - February 1, 2015
+	September 10, 2015 - February 7, 2016
+	September 8, 2016 - February 5, 2017
+	September 7, 2017 - February 4, 2018
+	September 7, 2018 - February 3, 2019
+	September 5, 2019 - February 2, 2020
+	September 10, 2020 - February 7, 2021 (proposed)
+
+NBA (Avg days = 
+	October 27, 2009 - June 17, 2010
+	October 26, 2010 - June 12, 2011
+	December 25, 2011 - June 21, 2012 (Lockout)
+	October 30, 2012 - June 20, 2013
+	October 29, 2013 - June 15, 2014
+	October 28, 2014 - June 16, 2015
+	October 27, 2015 - June 19, 2016
+	October 25, 2016 - June 12, 2017
+	October 17, 2017 - June 8, 2018
+	October 16, 2018 - June 12, 2019
+	October 22, 2019 - TBD (COVID-19)
+
+NHL (Avg days = 
+	October 4, 2008 - June 12, 2009
+	October 1, 2009 - June 9, 2010
+	October 7, 2010 - June 15, 2011
+	October 6, 2011 – June 11, 2012
+	January 19, 2012 - June 24, 2013
+	October 1, 2013 - June 13, 2014
+	October 8, 2014 - June 15, 2015
+	October 7, 2015 - June 11, 2017
+	October 4, 2017 - June 7, 2018
+	October 3, 2018 - June 12, 2019
+	October 2, 2019 - March 12, 2020 (COVID-19)
+	
+MLB (Avg days = 
+	April 5, 2009 - November 4, 2009
+	April 4, 2010 - November 1, 2010
+	March 31, 2011 - October 28, 2011
+	March 28, 2012 - October 28, 2012
+	March 31, 2013 - October 30, 2013
+	March 22, 2014 - October 29, 2014
+	April 5, 2015 - November 1, 2015
+	April 3, 2016 - November 2, 2016
+	April 2, 2017 - November 1, 2017
+	March 29, 2018 - October 28, 2018
+	March 20, 2019 – October 30, 2019
+	
+
+MLS (Avg days = 
+	March 19, 2009 - November 22, 2009
+	March 25, 2010 - Octover 24, 2010
+	March 15, 2011 - Octoer 23, 2011
+	March 10, 2012 - October 28, 2012
+	March 2, 2013 - October 27, 2013
+	March 8, 2014 - October 27, 2014
+	March 6, 2015 - October 25,  2015
+	March 6, 2016 - October 23, 2016
+	March 3, 2017 - October 25, 2017
+	March 3, 2018 - October 31, 2018
+	March 2, 2019 - November 10, 2019
+
+
+Revenue per day?
+Potential loss in revenue?
+
+
+
+
+usual begin dates:
+
+usual end dates:
+
+
+Proposed/Suggested begin dates?

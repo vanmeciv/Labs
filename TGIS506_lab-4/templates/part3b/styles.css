@@ -2,29 +2,13 @@ body {
   font-family: Helvetica Neue, Arial, sans-serif;
   text-align: center;
   background-image: url("https://www.publicdomainpictures.net/pictures/170000/velka/dollars-background-1462001697eaO.jpg");
-  /* background-color: #cccccc; */
   background-size: 100%;
   opacity: 1;
 }
 
-.wrapperOne {
-  max-width: 800px;
-  margin: 50px auto;
-}
-
 .wrapperTwo {
-  max-width: 800px;
-  margin: 50px auto;
-}
-
-.wrapperThree {
-  max-width: 800px;
-  margin: 50px auto;
-}
-
-.wrapperFour {
-  max-width: 800px;
-  margin: 50px auto;
+  max-width: 70%;
+  /* margin: 50px auto; */
 }
 
 h1 {
@@ -36,7 +20,7 @@ h1 {
 h2 {
   font-weight: 200;
   font-size: 1.2em;
-  margin: 0 0 50px;
+  margin: 0 0 10px;
   color: #000;
 }
 
@@ -48,7 +32,8 @@ a {
   font-size: 12px
 }
 
-/* canvas {
+canvas {
   margin-bottom: 20px;
-  background-image: url(../../images/dollars-background.jpg);
-} */
+  padding-left: 15%;
+  height: 45%;
+}

@@ -33,6 +33,12 @@ window.onload = function() {
           fill: false
         },
         {
+          data: mlbRev,
+          label: "MLB",
+          borderColor: "#000089",
+          fill: false
+        },
+        {
           data: nbaRev,
           label: "NBA",
           borderColor: "#17408B",
@@ -42,12 +48,6 @@ window.onload = function() {
           data: nhlRev,
           label: "NHL",
           borderColor: "#000000",
-          fill: false
-        },
-        {
-          data: mlbRev,
-          label: "MLB",
-          borderColor: "#000089",
           fill: false
         }
       ]

@@ -47,7 +47,7 @@ window.onload = function() {
               legend: {
                 display: true,
                 labels: {
-                    fontColor: '#fff',
+                    fontColor: '#FF5733',
                     fontStyle: 'bold'
                 }
               },

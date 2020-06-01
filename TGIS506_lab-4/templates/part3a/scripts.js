@@ -5,7 +5,7 @@ window.onload = function() {
   Chart.defaults.global.elements.point.hoverRadius = 12;
   Chart.defaults.global.elements.point.hoverBorderWidth = 6;
   Chart.defaults.global.elements.point.pointStyle = 'crossRot';
-  Chart.defaults.global.defaultFontFamily = "'Montserrat', sans-serif;";
+  // Chart.defaults.global.defaultFontFamily = "'Montserrat', sans-serif;";
   Chart.defaults.global.legend.position = 'bottom';
   Chart.defaults.global.legend.backgroundColor = '#000';
 
@@ -39,8 +39,18 @@ window.onload = function() {
               responsive: true,
       				title: {
       					display: true,
-      					text: "Select 'Reported COVID-19 Deaths' in legend for additional layer. Click or hover over points and bars for tooltip"
+                padding: -2,
+                fontColor: '#000',
+                fontSize: 18,
+                text: ["Select 'Reported COVID-19 Deaths' in legend for additional layer.","Click or hover over points and bars for tooltip"]
       				},
+              legend: {
+                display: true,
+                labels: {
+                    fontColor: '#fff',
+                    fontStyle: 'bold'
+                }
+              },
       				scales: {
       					yAxes: [{
       						ticks: {
@@ -52,6 +62,9 @@ window.onload = function() {
                     stepSize: 5000,
                     showLines: true,
                     padding: 10,
+                    fontColor: '#fff',
+                    fontSize: 14,
+                    fontStyle: 'bold',
                     beginAtZero:true,
                     userCallback: function(value, index, values) {
                         value = value.toString();
@@ -73,7 +86,9 @@ window.onload = function() {
                     padding: 5,
                     minRotation: 90,
                     maxRotation: 90,
-                    fontSize: 8
+                    fontColor: '#fff',
+                    fontSize: 14,
+                    fontStyle: 'bold',
                   }
                 }]
       				}

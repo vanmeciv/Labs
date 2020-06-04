@@ -50,14 +50,14 @@ window.onload = function() {
     },
     options: {
       responsive: true,
-      title: {
-        display: false,
-        // padding: -2,
-        fontColor: '#000',
-        fontSize: 12,
-        position: 'bottom',
-        text: []
-      },
+      // title: {
+      //   display: false,
+      //   // padding: -2,
+      //   fontColor: '#000',
+      //   fontSize: 12,
+      //   position: 'bottom',
+      //   text: []
+      // },
       legend: {
         display: true,
         labels: {

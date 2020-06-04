@@ -51,12 +51,12 @@ window.onload = function() {
     options: {
       responsive: true,
       title: {
-        display: true,
+        display: false,
         // padding: -2,
         fontColor: '#000',
-        fontSize: 8,
+        fontSize: 12,
         position: 'bottom',
-        text: ["Average trend in revenue increase year-over-year:","NFL ($636,000)","MLB ($293,770)","NBA ($305,000)","NHL: ($176,500)","Expected loss based on league's previous lockout years:","NFL (estimated revenue from outside source)","MLB (Average of NBA and NHL lockouts $510,000)","NBA ($280,000)","NHL ($740,000)",""]
+        text: []
       },
       legend: {
         display: true,
@@ -68,7 +68,7 @@ window.onload = function() {
     scales: {
               yAxes: [{
                   ticks: {
-                      fontSize: 14,
+                      fontSize: 10,
                       fontColor: '#000',
                       fontStyle: 'bold',
                       stepSize: 3,
@@ -81,7 +81,7 @@ window.onload = function() {
               xAxes: [{
                 ticks: {
                     fontColor: '#000',
-                    fontSize: 14,
+                    fontSize: 10,
                     fontStyle: 'bold',
                     stepSize: 1,
                     beginAtZero: true

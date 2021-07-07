@@ -16,7 +16,7 @@ var light = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
     id:'mapbox/light-v10',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrOHJwb3k2NDAwbDAzbXQzOGVoY2draXIifQ.QIoit6ivGyGVV8q1VWDEuw'
+    accessToken: 'pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrY3AzY3QxazBkN2UycmxlZG5uYjFueHIifQ.mLIK3f-mL_oe6YidlLQqSA'
 });
 
 var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -25,7 +25,7 @@ var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?
     id:'mapbox/dark-v10',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrOHJwb3k2NDAwbDAzbXQzOGVoY2draXIifQ.QIoit6ivGyGVV8q1VWDEuw'
+    accessToken: 'pk.eyJ1IjoiaXNhYWN2IiwiYSI6ImNrY3AzY3QxazBkN2UycmxlZG5uYjFueHIifQ.mLIK3f-mL_oe6YidlLQqSA'
 });
 // Step 4: Changing the basemap based on environmental conditions
 // var map = L.map('map', {layers:[light]}).fitWorld();

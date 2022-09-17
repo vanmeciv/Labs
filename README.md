@@ -1,5 +1,5 @@
 # GIS504Labs
- [Lab Instructions & Material] (https://github.com/UWTMGIS/TGIS_504-Wi20)
+ [Lab Instructions & Material](https://github.com/UWTMGIS/TGIS_504-Wi20)
 
 - Lab 1:
   - [Repo](/lab-1)

@@ -1,4 +1,4 @@
-# GIS504Labs
+# GIS 506 Labs
  [Lab Instructions & Material](https://github.com/UWTMGIS/TGIS_504-Wi20)
 
 - Lab 1:

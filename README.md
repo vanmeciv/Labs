@@ -19,4 +19,5 @@
 
 - Lab 5:
   - [Repo](/lab-5)
-  - ~~[Hosted Here]~~ No Longer Live
+  - Part 1 & 2 [Hosted Here](https://geocharts.geospatial.is/lab-5/templates/part1&2/lab-5
+  - Part 3 [Hosted Here](https://geocharts.geospatial.is/lab-5/templates/part3/lab-5

@@ -23,30 +23,22 @@
 ***
 # GIS 506 Labs
 
-- Lab 1:
-  - [Sample Work]{
-  - [Full Report]{
+- Lab 1: Education Equity Landscape in King County, WA
+  - [Sample Work](
+  - [Full Report](
   
 - Lab 2:
-  - [Sample Work]{
+  - [Sample Work](
   - [Full Report](
   
 - Lab 3:
   - [Sample Work](
   - [Full Report](
-  
-  
+
 - Lab 4:
-  - Part 1 & 2
-    - [Repo](/TGIS506_lab-4/templates/part1&2/)
-    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
+    - [Repo 1 & 2](/TGIS506_lab-4/templates/part1&2/), [Repo 3a](/TGIS506_lab-4/templates/part3a/), [Repo 3b](/TGIS506_lab-4/templates/part3b/)
+    - Part 1 & 2 [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
+    - Part 3a [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
+    - Part 3b [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
 
-  - Part 3a
-    - [Repo](/TGIS506_lab-4/templates/part3a/)
-    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
-  
-  - Part 3b
-    - [Repo](/TGIS506_lab-4/templates/part3b/)
-    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
-
-
+- Lab 5:

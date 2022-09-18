@@ -24,7 +24,7 @@
 # GIS 506 Labs
 
 - Lab 1: Education Equity Landscape in King County, WA
-  - ![alt text](/TGIS506_lab-4/images/Figure_6.jpg/ "King Co. Edu Equity Landscape")
+  ![alt text](/TGIS506_lab-4/images/Figure_6.jpg/ "King Co. Edu Equity Landscape")
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/ "Lab 1 Report")
   
 - Lab 2:

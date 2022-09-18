@@ -39,6 +39,8 @@
 
    <img src="https://github.com/vanmeciv/Labs/blob/master/TGIS506_lab-4/images/Lab_3e.png?raw=true" alt="Carbon River Lidar Analysis" width=40% height=40%>
    
+   
+   
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab3_Report.pdf/ "Lab 3 Report")
 
 - Lab 4:

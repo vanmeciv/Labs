@@ -11,13 +11,28 @@
 
 - Lab 3:
   - [Repo](/lab-3)
-  - ~~[Hosted Here]~~ No Longer Live
   
 - Lab 4:
   - [Repo](/lab-4)
-  - ~~[Hosted Here]~~ No Longer Live
 
 - Lab 5:
   - [Repo](/lab-5)
   - Part 1 & 2 [Hosted Here](https://geocharts.geospatial.is/lab-5/templates/part1&2)
   - Part 3 [Hosted Here](https://geocharts.geospatial.is/lab-5/templates/part3/lab-5)
+
+***
+# GIS 506 Labs
+
+- Part 1 & 2
+  - [Repo](/TGIS506_lab-4/templates/part1&2/)
+  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
+
+- Part 3a
+  - [Repo](/TGIS506_lab-4/templates/part3a/)
+  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
+  
+- Part 3b
+  - [Repo](/TGIS506_lab-4/templates/part3b/)
+  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
+
+

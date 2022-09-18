@@ -27,9 +27,9 @@
   ![alt text](/TGIS506_lab-4/images/Figure_6.jpg/ "King Co. Edu Equity Landscape")
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/ "Lab 1 Report")
   
-- Lab 2:
-  - [Sample Work](
-  - [Full Report](
+- Lab 2: Flood & Evacuation Analysis in New Orleans, LA
+   ![alt text](/TGIS506_lab-4/images/Figure1.png/ "New Orleans Flood & Evacuation Analysis")
+  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/)
   
 - Lab 3:
   - [Sample Work](

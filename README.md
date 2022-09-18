@@ -31,7 +31,7 @@
    ![alt text](/TGIS506_lab-4/images/Figure1.png/ "New Orleans Flood & Evacuation Analysis")
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/)
   
-- Lab 3:
+- Lab 3: Lidar Erosion Analysis in Carbon River, WA
    ![alt text](/TGIS506_lab-4/images/Lab_3e.png/ "Carbon River Lidar Analysis")
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab3_Report.pdf/)
 

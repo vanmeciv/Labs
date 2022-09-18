@@ -32,8 +32,8 @@
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/)
   
 - Lab 3:
-  - [Sample Work](
-  - [Full Report](
+   ![alt text](/TGIS506_lab-4/images/Lab_3e.png/ "Carbon River Lidar Analysis")
+  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab3_Report.pdf/)
 
 - Lab 4:
     - [Repo 1 & 2](/TGIS506_lab-4/templates/part1&2/), [Repo 3a](/TGIS506_lab-4/templates/part3a/), [Repo 3b](/TGIS506_lab-4/templates/part3b/)

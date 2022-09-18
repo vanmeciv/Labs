@@ -40,5 +40,3 @@
     - Part 1 & 2 [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
     - Part 3a [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
     - Part 3b [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
-
-- Lab 5:

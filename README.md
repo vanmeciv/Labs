@@ -23,16 +23,30 @@
 ***
 # GIS 506 Labs
 
-- Part 1 & 2
-  - [Repo](/TGIS506_lab-4/templates/part1&2/)
-  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
-
-- Part 3a
-  - [Repo](/TGIS506_lab-4/templates/part3a/)
-  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
+- Lab 1:
+  - [Sample Work]{
+  - [Full Report]{
   
-- Part 3b
-  - [Repo](/TGIS506_lab-4/templates/part3b/)
-  - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
+- Lab 2:
+  - [Sample Work]{
+  - [Full Report](
+  
+- Lab 3:
+  - [Sample Work](
+  - [Full Report](
+  
+  
+- Lab 4:
+  - Part 1 & 2
+    - [Repo](/TGIS506_lab-4/templates/part1&2/)
+    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part1&2/)
+
+  - Part 3a
+    - [Repo](/TGIS506_lab-4/templates/part3a/)
+    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3a/)
+  
+  - Part 3b
+    - [Repo](/TGIS506_lab-4/templates/part3b/)
+    - [Hosted Here](https://geocharts.geospatial.is/TGIS506_lab-4/templates/part3b/)
 
 

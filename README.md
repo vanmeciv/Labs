@@ -25,6 +25,7 @@
 
 - Lab 1: Education Equity Landscape in King County, WA
   - [Sample Work](
+  - ![alt text](/../../images/Figure_6.jpg/ "King Co. Edu Equity Landscape")
   - [Full Report](
   
 - Lab 2:

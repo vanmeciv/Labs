@@ -24,16 +24,22 @@
 # GIS 506 Labs
 
 - Lab 1: Education Equity Landscape in King County, WA
-  ![alt text](/TGIS506_lab-4/images/Figure_6.jpg/ "King Co. Edu Equity Landscape")
+
+  <img src="https://github.com/vanmeciv/Labs/blob/master/TGIS506_lab-4/images/Figure_6.jpg?raw=true" alt="King Co. Edu Equity Landscape" width=40% height=40%>
+  
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/ "Lab 1 Report")
   
 - Lab 2: Flood & Evacuation Analysis in New Orleans, LA
-   ![alt text](/TGIS506_lab-4/images/Figure1.png/ "New Orleans Flood & Evacuation Analysis")
-  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/)
+  
+  <img src="https://github.com/vanmeciv/Labs/blob/master/TGIS506_lab-4/images/Figure1.png?raw=true" alt="New Orleans Flood & Evacuation Analysis" width=40% height=40%>
+ 
+  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab2_Report.pdf/ "Lab 2 Report")
   
 - Lab 3: Lidar Erosion Analysis in Carbon River, WA
-   ![alt text](/TGIS506_lab-4/images/Lab_3e.png/ "Carbon River Lidar Analysis")
-  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab3_Report.pdf/)
+
+   <img src="https://github.com/vanmeciv/Labs/blob/master/TGIS506_lab-4/images/Lab_3e.png?raw=true" alt="Carbon River Lidar Analysis" width=40% height=40%>
+   
+  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab3_Report.pdf/ "Lab 3 Report")
 
 - Lab 4:
     - [Repo 1 & 2](/TGIS506_lab-4/templates/part1&2/), [Repo 3a](/TGIS506_lab-4/templates/part3a/), [Repo 3b](/TGIS506_lab-4/templates/part3b/)

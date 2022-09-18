@@ -28,8 +28,8 @@
   - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/ "Lab 1 Report")
   
 - Lab 2:
-  - [Sample Work](
-  - [Full Report](
+   ![alt text](/TGIS506_lab-4/images/Figure1.jpg/ "New Orleans Flood & Evacuation Analysis")
+  - [Full Report](/TGIS506_lab-4/images/TGIS506_Lab1_Report.pdf/
   
 - Lab 3:
   - [Sample Work](
